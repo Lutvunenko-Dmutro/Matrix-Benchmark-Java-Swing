@@ -36,7 +36,6 @@
 * `MatrixLabLogic.java`: Ядро обчислень (Варіант 8).
 * `ChartPanel.java`: Кастомний компонент `JPanel` для графіка.
 * `flatlaf-3.6.2.jar`: **(Залежність)** Бібліотека GUI.
-* `ModernApp.jar`: **(Збірка)** "Тонкий" JAR, створений через VS Code.
 
 ---
 
