@@ -10,14 +10,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.DoubleAdder; // Використовуємо для паралельної суми
 
-/**
- * Клас, що інкапсулює логіку Практичної роботи №3, Варіант 8.
- *
- * ВЕРСІЯ 3: Алгоритм O(N^2), оптимізований по пам'яті.
- * Ми більше не створюємо гігантський масив int[N][N] для "порядків",
- * а обчислюємо їх "на льоту" у три проходи, щоб уникнути
- * OutOfMemoryError.
- */
 public class MatrixLabLogic {
 
     /**
@@ -28,7 +20,7 @@ public class MatrixLabLogic {
             double sum,
             int maxOrder,
             long durationNs,
-            int[][] ordersMatrix) { // Це поле більше не використовується
+            int[][] ordersMatrix) { 
     }
 
     /**
@@ -40,7 +32,7 @@ public class MatrixLabLogic {
     }
 
     /**
-     * Створює квадратну матрицю. (Без змін)
+     * Створює квадратну матрицю. 
      */
     public static double[][] generateMatrix(int size, double zeroChance) {
         double[][] matrix = new double[size][size];
@@ -58,7 +50,7 @@ public class MatrixLabLogic {
     }
 
     /**
-     * Крок 1: Послідовно обчислює діагоналі. (Без змін)
+     * Крок 1: Послідовно обчислює діагоналі. 
      */
     private DiagonalCounts calculateDiagonalCountsSerial(double[][] matrix) {
         int n = matrix.length;
@@ -272,4 +264,5 @@ public class MatrixLabLogic {
             System.err.println("Верифікація: ПОМИЛКА (результати НЕ збігаються).");
         }
     }
+
 }
