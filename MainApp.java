@@ -7,7 +7,6 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Головний клас програми, що створює та показує GUI.
- * ВЕРСІЯ: Проста, без вкладок.
  */
 public class MainApp {
 
@@ -51,7 +50,6 @@ public class MainApp {
     private void createAndShowGUI() {
         setupFlatLaf();
 
-        // Використовуємо ваше ім'я у заголовку для персоналізації
         frame = new JFrame("Практична робота №9 (Варіант 8) - " + "Д. Литвиненко");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(800, 600));
@@ -129,8 +127,7 @@ public class MainApp {
                 BorderFactory.createEmptyBorder(60, 120, 60, 120)
         ));
         
-        // placeholderLabel.add(placeholderLabel); // ПОМИЛКА БУЛА ТУТ
-        placeholderPanel.add(placeholderLabel); // ВИПРАВЛЕНО: Додаємо JLabel до placeholderPanel
+        placeholderPanel.add(placeholderLabel); 
     }
 
     /**
@@ -267,4 +264,5 @@ public class MainApp {
             startButton.setText("Почати обчислення");
         }
     }
+
 }
