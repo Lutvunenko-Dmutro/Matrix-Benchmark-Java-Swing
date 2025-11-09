@@ -2,15 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Спеціалізована панель (наша "канва") для малювання
+ * Спеціалізована панель для малювання
  * стовпчастої діаграми результатів.
  * Використовує Graphics2D для якісного рендерингу.
- *
- * ОНОВЛЕНО: Додано форматування часу (хв/сек/мс).
- */
+ 
 public class ChartPanel extends JPanel {
 
-    // ... (Константи кольорів залишаються без змін) ...
+    // Константи кольорів 
     private static final Color COLOR_GRID = new Color(70, 70, 70);
     private static final Color COLOR_TEXT = new Color(187, 187, 187);
     private static final Color COLOR_BAR_SERIAL = new Color(60, 100, 160);
@@ -31,7 +29,6 @@ public class ChartPanel extends JPanel {
     }
 
     /**
-     * НОВИЙ ДОПОМІЖНИЙ МЕТОД
      * Форматує час (мс) у читабельний рядок (хв, сек, мс).
      */
     private String formatTime(double totalMilliseconds) {
@@ -60,7 +57,7 @@ public class ChartPanel extends JPanel {
         
         Graphics2D g2d = (Graphics2D) g;
 
-        // ... (Налаштування згладжування без змін) ...
+        // Налаштування згладжування 
         g2d.setRenderingHint(
                 RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
@@ -71,7 +68,7 @@ public class ChartPanel extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        // ... (Геометрія та малювання осей без змін) ...
+        // Геометрія та малювання осей 
         int padding = 60;
         int chartWidth = width - 2 * padding;
         int chartHeight = height - 2 * padding;
@@ -86,7 +83,7 @@ public class ChartPanel extends JPanel {
         int xAxis = padding;
         g2d.drawLine(xAxis, padding, xAxis, height - padding);
 
-        // --- ОНОВЛЕНО: Малюємо стовпець "Послідовно" ---
+        //  Малюємо стовпець "Послідовно"
         int xSerial = padding + (chartWidth / 4) - (barWidth / 2);
         int ySerial = yAxis - serialBarHeight;
         g2d.setColor(COLOR_BAR_SERIAL);
@@ -95,7 +92,7 @@ public class ChartPanel extends JPanel {
         g2d.setColor(COLOR_TEXT);
         g2d.drawString("Послідовно", xSerial + barWidth / 2 - 40, yAxis + 20);
         
-        // ОНОВЛЕНО: Використовуємо форматування
+        // Використовуємо форматування
         // та центруємо текст над стовпцем
         String serialTimeText = formatTime(serialTimeMs);
         FontMetrics fm = g2d.getFontMetrics();
@@ -104,7 +101,7 @@ public class ChartPanel extends JPanel {
                 xSerial + (barWidth / 2) - (serialTextWidth / 2),
                 ySerial - 10);
 
-        // --- ОНОВЛЕНО: Малюємо стовпець "Паралельно" ---
+        // Малюємо стовпець "Паралельно"
         int xParallel = padding + (chartWidth * 3 / 4) - (barWidth / 2);
         int yParallel = yAxis - parallelBarHeight;
         g2d.setColor(COLOR_BAR_PARALLEL);
@@ -113,7 +110,7 @@ public class ChartPanel extends JPanel {
         g2d.setColor(COLOR_TEXT);
         g2d.drawString("Паралельно", xParallel + barWidth / 2 - 40, yAxis + 20);
         
-        // ОНОВЛЕНО: Використовуємо форматування
+        // Використовуємо форматування
         // та центруємо текст над стовпцем
         String parallelTimeText = formatTime(parallelTimeMs);
         int parallelTextWidth = fm.stringWidth(parallelTimeText);
@@ -121,11 +118,12 @@ public class ChartPanel extends JPanel {
                 xParallel + (barWidth / 2) - (parallelTextWidth / 2),
                 yParallel - 10);
         
-        // ... (Малювання тексту "Прискорення" без змін) ...
+        // Малювання тексту "Прискорення"
         g2d.setColor(COLOR_SPEEDUP);
         g2d.setFont(new Font("Arial", Font.BOLD, 24));
         String speedUpText = String.format("Прискорення: %.2f x", speedUp);
         int textWidth = g2d.getFontMetrics().stringWidth(speedUpText);
         g2d.drawString(speedUpText, (width - textWidth) / 2, padding - 15);
     }
+
 }
